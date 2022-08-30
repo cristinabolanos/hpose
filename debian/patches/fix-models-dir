@@ -1,0 +1,29 @@
+Change models path from /usr/lib/python3/dist-packages to ~/.config/hpose
+--- a/hpose.py
++++ b/hpose.py
+@@ -1,5 +1,5 @@
+ import importlib
+-import os.path
++import os
+ import platform
+ import re
+ import subprocess
+@@ -109,14 +109,15 @@
+     @staticmethod
+     def get_or_download_model(lightning: bool = True) -> str:
+         """Get, or download, MoveNet model file.
+-        If downloaded, it is saved in the modules path.
++        If downloaded, it is saved in ~/.config/hpose.
+         If device is a Coral Dev Board, it is forced to 
+         look up for the Coral modified version of MoveNet.
+ 
+         :param bool lightning: use lightning variant, defaults to True
+         """
+-        directory = os.path.dirname(
+-            os.path.abspath(__file__))
++        directory = os.path.join(os.path.expanduser('~'),
++                                 '.config', 'hpose')
++        os.makedirs(directory, exist_ok=True)
+         variant = 'lightning' if lightning else 'thunder'
+         if is_coral_board():
+             filename = f'movenet_{variant}_coral.tflite'
