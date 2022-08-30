@@ -1,0 +1,4 @@
+requests
+tflite_runtime
+numpy
+opencv-python
