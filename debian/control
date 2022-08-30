@@ -1,0 +1,17 @@
+Source: hpose
+Section: python
+Priority: optional
+Maintainer: Cristina Bolaños Peño <Cristina.Bolanos@uclm.es>
+Build-Depends: debhelper (>= 12),
+ quilt,
+ dh-python,
+ python3-all
+Standards-Version: 4.6.0
+
+Package: python3-hpose
+Architecture: all
+Depends: ${misc:Depends},
+ ${python3:Depends}
+Description: Human pose detection library (Python3)
+ This is a Python3 library which allows one to 
+ extract human joints position from a image.

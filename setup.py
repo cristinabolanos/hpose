@@ -11,8 +11,20 @@ def requirements() -> list:
     return retval
 
 
+def long_description() -> str:
+    with open('README.md') as fr:
+        retval = fr.read()
+    return retval
+
+
+def version():
+    with open('debian/changelog') as fr:
+        return fr.readline().split('(')[
+            1].split('-')[0]
+
+
 setup(name='hpose',
-      version='0.0.0',
+      version=version(),
       author='Cristina Bolaños Peño',
       author_email='cristinabope@gmail.com',
       license='GNU General Public License v3',
@@ -22,7 +34,7 @@ setup(name='hpose',
       'position from a media file (or camera ' +
       'device stream).',
       py_modules=['hpose'],
-      package_data={'hpose': ['README.md', 'LICENSE']},
+      package_data={'hpose': ['LICENSE']},
       install_requires=requirements(),
       classifiers=['Development Status :: 3 - Alpha',
                    'License :: OSI Approved :: ' +
