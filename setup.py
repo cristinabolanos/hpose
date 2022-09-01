@@ -11,20 +11,8 @@ def requirements() -> list:
     return retval
 
 
-def long_description() -> str:
-    with open('README.md') as fr:
-        retval = fr.read()
-    return retval
-
-
-def version():
-    with open('debian/changelog') as fr:
-        return fr.readline().split('(')[
-            1].split('-')[0]
-
-
 setup(name='hpose',
-      version=version(),
+      version='0.20220830',
       author='Cristina Bolaños Peño',
       author_email='cristinabope@gmail.com',
       license='GNU General Public License v3',
